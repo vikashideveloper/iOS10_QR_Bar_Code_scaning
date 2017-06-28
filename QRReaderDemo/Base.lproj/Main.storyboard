@@ -1,14 +1,86 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bA5-8N-s23">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="10X-8z-wBa">
+            <objects>
+                <viewController id="bA5-8N-s23" customClass="ViewController" customModule="QRReaderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iaX-Uu-KZO"/>
+                        <viewControllerLayoutGuide type="bottom" id="50R-OU-zx8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lvo-h9-BwI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMO-kp-apH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR and BAR Code Scanner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7l-g3-LEo">
+                                        <rect key="frame" x="91" y="34" width="194" height="18"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cut-SK-d9O">
+                                        <rect key="frame" x="321" y="26" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="aHy-1I-rS3"/>
+                                            <constraint firstAttribute="width" constant="46" id="vOR-Ho-xzN"/>
+                                        </constraints>
+                                        <state key="normal" title="Scan"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="scannerSegue" id="NrP-v0-nrQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.75922389837367599" green="0.81081652353281708" blue="0.82766117116947868" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="6bH-eq-ARD"/>
+                                    <constraint firstItem="q7l-g3-LEo" firstAttribute="centerX" secondItem="FMO-kp-apH" secondAttribute="centerX" id="BXe-xI-x5q"/>
+                                    <constraint firstAttribute="bottom" secondItem="cut-SK-d9O" secondAttribute="bottom" constant="8" id="JJG-sz-fc8"/>
+                                    <constraint firstAttribute="bottom" secondItem="q7l-g3-LEo" secondAttribute="bottom" constant="12" id="Lan-8Z-5xK"/>
+                                    <constraint firstAttribute="trailing" secondItem="cut-SK-d9O" secondAttribute="trailing" constant="8" id="RRl-Ds-DjQ"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on Scan button for scanning QR and Bar Code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6S-eQ-ghF">
+                                <rect key="frame" x="16" y="140" width="343" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FMO-kp-apH" firstAttribute="leading" secondItem="lvo-h9-BwI" secondAttribute="leading" id="0qU-Te-MJA"/>
+                            <constraint firstItem="T6S-eQ-ghF" firstAttribute="top" secondItem="FMO-kp-apH" secondAttribute="bottom" constant="76" id="9eJ-cT-0cu"/>
+                            <constraint firstAttribute="trailing" secondItem="FMO-kp-apH" secondAttribute="trailing" id="Knv-wk-Bdn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="T6S-eQ-ghF" secondAttribute="trailing" id="eNu-gL-20e"/>
+                            <constraint firstItem="FMO-kp-apH" firstAttribute="top" secondItem="lvo-h9-BwI" secondAttribute="top" id="tFp-s3-aVe"/>
+                            <constraint firstItem="T6S-eQ-ghF" firstAttribute="leading" secondItem="lvo-h9-BwI" secondAttribute="leadingMargin" id="vBX-zt-7Go"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lblResult" destination="T6S-eQ-ghF" id="Gas-w0-dhk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="le7-qm-oNl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-498.39999999999998" y="120.98950524737631"/>
+        </scene>
+        <!--Scanner View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ScannerViewController" customModule="QRReaderDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +88,12 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="226" y="121"/>
         </scene>
     </scenes>
 </document>
