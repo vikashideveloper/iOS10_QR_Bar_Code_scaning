@@ -60,10 +60,19 @@ class ScannerViewController: UIViewController {
         
         let metaDataOutput = AVCaptureMetadataOutput()
         
+        let scanAreaView = UIView()
+        scanAreaView.layer.borderColor = UIColor.red.cgColor
+        scanAreaView.backgroundColor = UIColor.clear
+        scanAreaView.layer.borderWidth = 2.5
+        scanAreaView.frame.size = CGSize(width: 300, height: 250)
+        scanAreaView.center = self.view.center
+        let scanRect = scanAreaView.frame
+
         if captureSession.canAddOutput(metaDataOutput) {
             captureSession.addOutput(metaDataOutput)
             metaDataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metaDataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode,AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypePDF417Code]
+
         } else  {
             return print("Your device does not support scanning a code from an item. Please use a device with a camera")
         }
@@ -73,7 +82,8 @@ class ScannerViewController: UIViewController {
         previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         view.layer.addSublayer(previewLayer)
         captureSession.startRunning()
-        
+        metaDataOutput.rectOfInterest = previewLayer.metadataOutputRectOfInterest(for: scanRect)
+        self.view.addSubview(scanAreaView)
     }
     
     func requestAuthorizationForCameraAccess() {
@@ -89,7 +99,9 @@ class ScannerViewController: UIViewController {
         default:
             AVCaptureDevice.requestAccess(forMediaType: deviceType, completionHandler: { (granted) in
                 if granted {
-                    self.prepareScanner()
+                    DispatchQueue.main.async {
+                        self.prepareScanner()
+                    }
                 }
             })
         }
@@ -112,4 +124,5 @@ extension ScannerViewController : AVCaptureMetadataOutputObjectsDelegate {
 
     }
 }
+
 
