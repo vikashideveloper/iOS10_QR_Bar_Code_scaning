@@ -40,6 +40,7 @@ class ScannerViewController: UIViewController {
         }
     }
 
+    //prepare capturing session.
     func prepareScanner() {
         captureSession = AVCaptureSession()
         
@@ -86,6 +87,7 @@ class ScannerViewController: UIViewController {
         self.view.addSubview(scanAreaView)
     }
     
+    //request authorization for camera access.
     func requestAuthorizationForCameraAccess() {
         let deviceType = AVMediaTypeVideo
         let status = AVCaptureDevice.authorizationStatus(forMediaType: deviceType)
@@ -93,7 +95,7 @@ class ScannerViewController: UIViewController {
         case .authorized:
             prepareScanner()
         case .denied:
-            print("You might have denied camera access. Please go to setting and allow camera access for QRReaderDemo App.")
+            
             break
             
         default:
@@ -108,6 +110,7 @@ class ScannerViewController: UIViewController {
     }
 }
 
+//Capture metadata output delegate.
 extension ScannerViewController : AVCaptureMetadataOutputObjectsDelegate {
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         captureSession.stopRunning()
